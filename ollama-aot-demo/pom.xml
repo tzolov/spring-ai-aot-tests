@@ -10,9 +10,9 @@
 		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.springframework.ai.aot.test</groupId>
-	<artifactId>bedrock-anthropic-aot-demo</artifactId>
+	<artifactId>ollama-aot-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>bedrock-anthropic-aot-demo</name>
+	<name>ollama-aot-demo</name>
 
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -40,7 +40,7 @@
 
 		<dependency>
 			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-bedrock-ai-spring-boot-starter</artifactId>
+			<artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
 		</dependency>
 
 
