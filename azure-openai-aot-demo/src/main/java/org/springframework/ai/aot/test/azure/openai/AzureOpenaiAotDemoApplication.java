@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyDescription;
 import reactor.core.publisher.Flux;
 
 import org.springframework.ai.azure.openai.AzureOpenAiChatClient;
+import org.springframework.ai.azure.openai.AzureOpenAiChatOptions;
 import org.springframework.ai.azure.openai.AzureOpenAiEmbeddingClient;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -54,13 +55,13 @@ public class AzureOpenaiAotDemoApplication {
 
             // Embedding Client
             System.out.println(embeddingClient.embed("Hello, World!"));
-            // List<List<Double>> embeddings = embeddingClient.embed(List.of("Hello", "World"));
-            // System.out.println("EMBEDDINGS SIZE: " + embeddings.size());
+            List<List<Double>> embeddings = embeddingClient.embed(List.of("Hello", "World"));
+            System.out.println("EMBEDDINGS SIZE: " + embeddings.size());
 
             // Function calling
-            // ChatResponse weatherResponse = chatClient.call(new Prompt("What is the weather in Amsterdam, Netherlands?",
-            //         AzureOpenAiChatOptions.builder().withFunction("weatherInfo").build()));
-            // System.out.println("WEATHER RESPONSE: " + weatherResponse.getResult().getOutput().getContent());
+            ChatResponse weatherResponse = chatClient.call(new Prompt("What is the weather in Amsterdam, Netherlands?",
+                    AzureOpenAiChatOptions.builder().withFunction("weatherInfo").build()));
+            System.out.println("WEATHER RESPONSE: " + weatherResponse.getResult().getOutput().getContent());
         };
     }
 
@@ -77,8 +78,6 @@ public class AzureOpenaiAotDemoApplication {
         @JsonClassDescription("Weather API request")
         public record Request(
                 @JsonProperty(required = true, value = "location") @JsonPropertyDescription("The city and state e.g. San Francisco, CA") String location,
-                @JsonProperty(required = true, value = "lat") @JsonPropertyDescription("The city latitude") double lat,
-                @JsonProperty(required = true, value = "lon") @JsonPropertyDescription("The city longitude") double lon,
                 @JsonProperty(required = true, value = "unit") @JsonPropertyDescription("Temperature unit") Unit unit) {
         }
 
