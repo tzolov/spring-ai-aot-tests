@@ -119,6 +119,8 @@ public class VertexAiGeminiAotDemoApplication {
             var mcs = MemberCategory.values();
             hints.reflection().registerType(MockWeatherService.Request.class, mcs);
             hints.reflection().registerType(MockWeatherService.Response.class, mcs);
+
+            hints.resources().registerResource(new ClassPathResource("/vertex.test.png"));
         }
 
     }

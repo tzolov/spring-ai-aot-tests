@@ -10,9 +10,9 @@
 		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.springframework.ai.aot.test</groupId>
-	<artifactId>openai-aot-demo</artifactId>
+	<artifactId>vertexai-gemini-aot-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>openai-aot-demo</name>
+	<name>vertexai-gemini-aot-demo</name>
 
 	<description>Demo project for Spring Boot</description>
 	<properties>

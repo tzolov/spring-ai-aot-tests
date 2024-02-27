@@ -1,11 +1,13 @@
 # Spring AI OpenAI AOT Demo Application
 
 ```
-./mvnw clean install -DskipTests -Pnative native:compile
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-jdk-21.0.2+13.1/Contents/Home
+
+./mvnw clean install -Pnative native:compile
 ```
 
 ```
-./target/openai-aot-demo
+./target/vertexai-gemini-aot-demo
 ```
 
 ## Generate GraalVM configs
@@ -13,5 +15,5 @@
 ```
 java -Dspring.aot.enabled=true \
     -agentlib:native-image-agent=config-output-dir=target/config-dir/ \
-    -jar target/openai-aot-demo-0.0.1-SNAPSHOT.jar
+    -jar target/vertexai-gemini-aot-demo-0.0.1-SNAPSHOT.jar
 ```
