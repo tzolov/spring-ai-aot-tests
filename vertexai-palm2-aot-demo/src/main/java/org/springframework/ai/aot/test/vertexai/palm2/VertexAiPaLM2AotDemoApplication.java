@@ -2,8 +2,8 @@ package org.springframework.ai.aot.test.vertexai.palm2;
 
 import java.util.List;
 
-import org.springframework.ai.vertex.VertexAiChatClient;
-import org.springframework.ai.vertex.VertexAiEmbeddingClient;
+import org.springframework.ai.vertexai.palm2.VertexAiChatClient;
+import org.springframework.ai.vertexai.palm2.VertexAiEmbeddingClient;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

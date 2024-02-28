@@ -1,4 +1,6 @@
-# Spring AI OpenAI AOT Demo Application
+# Spring AI Vertex AI PaLM2 AOT Demo Application
+
+NOTE: Works only within US region. Use VPN if outside.
 
 ```
 ./mvnw clean install -DskipTests -Pnative native:compile
