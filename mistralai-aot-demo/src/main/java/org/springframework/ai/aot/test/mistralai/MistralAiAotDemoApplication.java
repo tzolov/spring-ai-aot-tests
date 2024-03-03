@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import reactor.core.publisher.Flux;
 
 import org.springframework.ai.chat.ChatResponse;
@@ -14,21 +13,14 @@ import org.springframework.ai.mistralai.MistralAiChatClient;
 import org.springframework.ai.mistralai.MistralAiChatOptions;
 import org.springframework.ai.mistralai.MistralAiEmbeddingClient;
 import org.springframework.ai.mistralai.api.MistralAiApi;
-import org.springframework.aot.hint.MemberCategory;
-import org.springframework.aot.hint.RuntimeHints;
-import org.springframework.aot.hint.RuntimeHintsRegistrar;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Description;
-import org.springframework.context.annotation.ImportRuntimeHints;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 @SpringBootApplication
-@ImportRuntimeHints(MistralAiAotDemoApplication.PaymentStatusServiceRuntimeHints.class)
 public class MistralAiAotDemoApplication {
 
     public static void main(String[] args) {
@@ -67,10 +59,10 @@ public class MistralAiAotDemoApplication {
         };
     }
 
-    public record Transaction(@JsonProperty(required = true, value = "transaction_id") String transactionId) {
+    public record Transaction(String transactionId) {
     }
 
-    public record Status(@JsonProperty(required = true, value = "status") String status) {
+    public record Status(String status) {
     }
 
     @Bean
@@ -86,15 +78,4 @@ public class MistralAiAotDemoApplication {
             new Transaction("T1003"), new Status("Paid"),
             new Transaction("T1004"), new Status("Paid"),
             new Transaction("T1005"), new Status("Pending"));
-
-    // GraalVM Reflection Configuration
-    public static class PaymentStatusServiceRuntimeHints implements RuntimeHintsRegistrar {
-        @Override
-        public void registerHints(@NonNull RuntimeHints hints, @Nullable ClassLoader classLoader) {
-            // Register method for reflection
-            var mcs = MemberCategory.values();
-            hints.reflection().registerType(Transaction.class, mcs);
-            hints.reflection().registerType(Status.class, mcs);
-        }
-    }
 }
