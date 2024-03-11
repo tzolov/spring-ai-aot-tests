@@ -2,8 +2,8 @@ package org.springframework.ai.aot.test.vertexai.palm2;
 
 import java.util.List;
 
-import org.springframework.ai.vertexai.palm2.VertexAiChatClient;
-import org.springframework.ai.vertexai.palm2.VertexAiEmbeddingClient;
+import org.springframework.ai.vertexai.palm2.VertexAiPaLm2ChatClient;
+import org.springframework.ai.vertexai.palm2.VertexAiPaLm2EmbeddingClient;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,7 +20,7 @@ public class VertexAiPaLM2AotDemoApplication {
     }
 
     @Bean
-    ApplicationRunner applicationRunner(VertexAiChatClient chatClient, VertexAiEmbeddingClient embeddingClient) {
+    ApplicationRunner applicationRunner(VertexAiPaLm2ChatClient chatClient, VertexAiPaLm2EmbeddingClient embeddingClient) {
         return args -> {
             System.out.println("ChatClient: " + chatClient.getClass().getName());
             System.out.println("EmbeddingClient: " + embeddingClient.getClass().getName());

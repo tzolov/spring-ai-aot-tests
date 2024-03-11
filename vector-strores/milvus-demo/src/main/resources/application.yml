@@ -1,0 +1,17 @@
+spring:
+  ai:
+    vectorstore:
+      milvus:
+        client:
+          host: "localhost"
+          port: 19530
+          username: "root"
+          password: "milvus"
+        databaseName: "default"
+        collectionName: "vector_store"
+        # embeddingDimension: 384
+        indexType: IVF_FLAT
+        metricType: COSINE
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat.enabled: false
