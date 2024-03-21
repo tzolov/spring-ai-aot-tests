@@ -1,0 +1,10 @@
+spring:
+  neo4j:
+    uri: bolt://localhost:7687
+    authentication:
+      username: neo4j
+      password: neo4j
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      chat.enabled: false
